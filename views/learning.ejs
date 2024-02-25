@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mathematics</title>
+  <link id="icon" rel="icon" type="image/x-icon" href="" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <link rel="stylesheet" href="./css/all.css">
+  <link rel="stylesheet" href="./css/learning.css">
+</head>
+
+<body>
+  <iframe id="result" src="" onkeydown="handleKeyPress()" allowfullscreen></iframe>
+  <div class="flex-box">
+    <center>
+      <div class="settingspanel">
+        <h1 style="font-size: 30px;">Proxy Settings</h1>
+        <p>Settings to modify the proxy.</p>
+        <br />
+        <button onclick="showorhidedevtools()">Enable/disable Devtools</button>
+        <button onclick="proxyURL()" id="proxybtn">Show proxy URL</button>
+        <button onclick="preventClosing()" id="tabclosebtn">Enable Tab Closing Preventer</button>
+        <br /><br />
+        <p>(Want more settings? Tell it to us in our Discord!)</p>
+        <button onclick="
+        let settingspanel = document.querySelector('.settingspanel');
+        settingspanel.style.bottom = '-1000px';
+        ">Close panel</button>
+      </div>
+    </center>
+  </div>
+  <div class="mainbtns">
+    <button class="navbtn" onclick="location.href = '/';"><i class="fa-solid fa-house"></i></button>
+    <button class="navbtn" onclick="reloadPX()"><i class="fa-solid fa-rotate-right"></i></button>
+    <button class="navbtn" onclick="searchshow()"><i class="fa-solid fa-search"></i></button>
+    <button class="navbtn" onclick="fullscreen()"><i class="fa-solid fa-eye-slash"></i></button>
+    <button class="navbtn" onclick="showsettings()"><i class="fa-solid fa-gear"></i></button>
+    <button class="navbtn" id="devtools" onclick="devTools()"><i class="fa-solid fa-code"></i></button>
+  </div>
+  <div class="searchbar">
+    <form id="searchform" style="display: flex; justify-content: center;">
+      <input type="text" class="searchinput" placeholder="Search the web freely..." />
+      <button class="searchbtn" style="margin-left: 5px;">
+        <i class="fa-solid fa-magnifying-glass"></i>
+      </button>
+    </form>
+  </div>
+  <div class="flex-box">
+    <div class="proxyurl">
+      <input placeholder="Initializing . . ." id="proxyurl" value=""
+        readonly style="color: #909090;" />
+    </div>
+  </div>
+  </div>
+  <script src="./uv/uv.bundle.js"></script>
+  <script src="./uv/uv.config.js"></script>
+  <script src="./js/learninginit.js"></script>
+  <script src="./js/learning.js"></script>
+
+  <script>
+    let savedTitle = localStorage.getItem("tabName");
+    let savedBG = localStorage.getItem("BG");
+    let savedFavicon = localStorage.getItem("favicon");
+    let favicon = document.getElementById("icon");
+    let savedLink = localStorage.getItem("savedLink");
+    let savedKey = localStorage.getItem("savedKey");
+
+    if (savedTitle) {
+      document.title = savedTitle;
+    }
+    if (savedFavicon) {
+      favicon.href = savedFavicon;
+    }
+
+    if (savedBG) {
+      document.body.style.backgroundImage = `url("${savedBG}")`;
+      document.body.style.backgroundRepeat = "no-repeat"
+      document.body.style.backgroundSize = "cover";
+    }
+
+    function handleKeyPress(event) {
+      if (event.key === savedKey) {
+        if (savedLink.includes("https://")) {
+          window.location.href = savededulink;
+        } else {
+          window.location.href = "https://" + savedLink;
+        }
+      }
+    }
+
+    document.addEventListener("keydown", handleKeyPress);
+
+
+  </script>
+</body>
+
+</html>
